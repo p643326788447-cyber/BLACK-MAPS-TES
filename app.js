@@ -1,4 +1,4 @@
-const API="/.netlify/functions/api";
+const API="/api";
 const state={th:"all",category:"all",maps:[]};
 const $=s=>document.querySelector(s);
 async function api(action,options={}){const [act,query]=action.split("&",2);const res=await fetch(`${API}?action=${encodeURIComponent(act)}${query?"&"+query:""}`,options);let data={};try{data=await res.json()}catch{}if(!res.ok)throw new Error(data.error||"ارتباط با سرور ناموفق بود");return data}
