@@ -1,4 +1,4 @@
-const API="/.netlify/functions/api";
+const API="/api";
 const $=s=>document.querySelector(s);
 async function api(action,options={}){
   const r=await fetch(API+"?action="+action,{...options,cache:"no-store"});
