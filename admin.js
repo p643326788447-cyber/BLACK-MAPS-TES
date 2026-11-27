@@ -1,4 +1,4 @@
-const API="/.netlify/functions/api";const $=s=>document.querySelector(s);let authed=false;
+const API="/api";const $=s=>document.querySelector(s);let authed=false;
 async function api(action,options={}){const [act,query]=action.split("&",2);const r=await fetch(`${API}?action=${encodeURIComponent(act)}${query?"&"+query:""}`,{...options,cache:"no-store",credentials:"same-origin"});let d={};try{d=await r.json()}catch{}if(!r.ok)throw Error(d.error||"خطا در ارتباط با سرور");return d}
 function esc(v=""){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function showDash(){authed=true;const loginPanel=$("#login-panel");if(loginPanel)loginPanel.hidden=true;$("#dashboard").hidden=false;$("#logout").hidden=false;refreshAll()}
